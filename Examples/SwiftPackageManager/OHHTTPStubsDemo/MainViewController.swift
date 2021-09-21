@@ -9,6 +9,10 @@
 import UIKit
 import OHHTTPStubs
 import OHHTTPStubsSwift
+import PromiseKit
+import PMKFoundation
+import Foundation
+
 
 class MainViewController: UIViewController {
 
@@ -60,18 +64,31 @@ class MainViewController: UIViewController {
         
         let urlString = "http://www.opensource.apple.com/source/Git/Git-26/src/git-htmldocs/git-commit.txt?txt"
         let req = URLRequest(url: URL(string: urlString)!)
-
-        URLSession.shared.dataTask(with: req) { [weak self] (data, _, _) in
-            DispatchQueue.main.async {
-                guard let self = self else {
-                    return
-                }
-                sender.isEnabled = true
-                if let receivedData = data, let receivedText = NSString(data: receivedData, encoding: String.Encoding.ascii.rawValue) {
-                    self.textView.text = receivedText as String
-                }
+        
+        firstly {
+            URLSession.shared.dataTask(.promise, with: req)
+        }.done { receivedData, _ in
+            guard let self = self else {
+                return
             }
-        }.resume()
+            sender.isEnabled = true
+            if let receivedText = NSString(data: receivedData, encoding: String.Encoding.ascii.rawValue) {
+                self.textView.text = receivedText as String
+            }
+        }
+
+
+//        URLSession.shared.dataTask(with: req) { [weak self] (data, _, _) in
+//            DispatchQueue.main.async {
+//                guard let self = self else {
+//                    return
+//                }
+//                sender.isEnabled = true
+//                if let receivedData = data, let receivedText = NSString(data: receivedData, encoding: String.Encoding.ascii.rawValue) {
+//                    self.textView.text = receivedText as String
+//                }
+//            }
+//        }.resume()
     }
 
     weak var textStub: HTTPStubsDescriptor?

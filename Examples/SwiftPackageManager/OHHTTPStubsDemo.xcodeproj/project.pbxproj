@@ -17,6 +17,8 @@
 		1FDDCA6722FF975200D47058 /* OHHTTPStubsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1FDDCA6622FF975200D47058 /* OHHTTPStubsSwift */; };
 		1FDF83BD22FF905B00BC47DF /* stub.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1FDF83BB22FF905B00BC47DF /* stub.txt */; };
 		1FDF83BE22FF905B00BC47DF /* stub.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1FDF83BC22FF905B00BC47DF /* stub.jpg */; };
+		E44E714126F88E9A00CE7116 /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = E44E714026F88E9A00CE7116 /* PromiseKit */; };
+		E44E714426F972AE00CE7116 /* PMKFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = E44E714326F972AE00CE7116 /* PMKFoundation */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,7 +40,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E44E714426F972AE00CE7116 /* PMKFoundation in Frameworks */,
 				1FDDCA6722FF975200D47058 /* OHHTTPStubsSwift in Frameworks */,
+				E44E714126F88E9A00CE7116 /* PromiseKit in Frameworks */,
 				1F83D58B22FFB8D80004EE44 /* OHHTTPStubs in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -115,6 +119,8 @@
 			packageProductDependencies = (
 				1FDDCA6622FF975200D47058 /* OHHTTPStubsSwift */,
 				1F83D58A22FFB8D80004EE44 /* OHHTTPStubs */,
+				E44E714026F88E9A00CE7116 /* PromiseKit */,
+				E44E714326F972AE00CE7116 /* PMKFoundation */,
 			);
 			productName = OHHTTPStubsDemo;
 			productReference = 1F206B5D22FF819000B98E3C /* OHHTTPStubsDemo.app */;
@@ -144,6 +150,10 @@
 				Base,
 			);
 			mainGroup = 1F206B5422FF819000B98E3C;
+			packageReferences = (
+				E44E713F26F88E9A00CE7116 /* XCRemoteSwiftPackageReference "PromiseKit" */,
+				E44E714226F972AE00CE7116 /* XCRemoteSwiftPackageReference "Foundation" */,
+			);
 			productRefGroup = 1F206B5E22FF819000B98E3C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -374,6 +384,25 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		E44E713F26F88E9A00CE7116 /* XCRemoteSwiftPackageReference "PromiseKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mxcl/PromiseKit";
+			requirement = {
+				kind = exactVersion;
+				version = 6.8.0;
+			};
+		};
+		E44E714226F972AE00CE7116 /* XCRemoteSwiftPackageReference "Foundation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/PromiseKit/Foundation.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		1F83D58A22FFB8D80004EE44 /* OHHTTPStubs */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -382,6 +411,16 @@
 		1FDDCA6622FF975200D47058 /* OHHTTPStubsSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = OHHTTPStubsSwift;
+		};
+		E44E714026F88E9A00CE7116 /* PromiseKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E44E713F26F88E9A00CE7116 /* XCRemoteSwiftPackageReference "PromiseKit" */;
+			productName = PromiseKit;
+		};
+		E44E714326F972AE00CE7116 /* PMKFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E44E714226F972AE00CE7116 /* XCRemoteSwiftPackageReference "Foundation" */;
+			productName = PMKFoundation;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
